@@ -2,10 +2,10 @@
 
 _, K = map(int, input().split())
 A = list(map(int, input().split()))
-total=max_=0
-for k in range(0,K+1):
+max_=0
+for k in range(K+1):
+    total = 0
     for a in A:
         total += k ^ a
     max_ = max(max_, total)
-    total = 0
 print(max_)
