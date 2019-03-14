@@ -11,16 +11,16 @@ from itertools import accumulate
 
 _ = input()
 acc = list(accumulate(map(int, input().split())))
-l,r = 0,2
+l,r = 0,2 # left: l, middle: m, right: r
 total = acc[-1]
 diff = total
 
-for a in acc[1:-2]:
-    while total+a > acc[r]+acc[r+1]:
+for m in acc[1:-2]:
+    while total+m > acc[r]+acc[r+1]:
         r += 1
-    while a > acc[l]+acc[l+1]:
+    while m > acc[l]+acc[l+1]:
         l += 1
-    sub_diff = sorted([acc[l], a-acc[l], acc[r]-a, total-acc[r]])
+    sub_diff = sorted([acc[l], m-acc[l], acc[r]-m, total-acc[r]])
     diff = min(diff, sub_diff[-1]-sub_diff[0])
 
 print(diff)
